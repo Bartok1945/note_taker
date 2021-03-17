@@ -13,11 +13,11 @@ module.exports = function(app) {
     
     app.post("/api/notes", (req, res) => {
         const newNote = req.body;
-        const noteId = (notesData.length).toString();
+        const noteId = (noteData.length).toString();
         newNote.id = noteId;
         noteData.push(newNote);
 
-        fs.writeFileSync("../db/db.json", JSON.stringify(noteData));
+        fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
         return res.json(noteData);
     });
 
@@ -28,7 +28,7 @@ app.delete("/api/notes/:id", (req, res) => {
     const { id } = req.params;
     const noteIndex = noteData.findIndex((n) => n.id == id);
     noteData.splice(noteIndex, 1);
-    fs.writeFileSync("../db/db.json", JSON.stringify(notesData));
+    fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
     return res.json(noteData);
 });
 
