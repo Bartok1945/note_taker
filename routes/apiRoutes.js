@@ -31,6 +31,5 @@ app.delete("/api/notes/:id", (req, res) => {
     fs.writeFileSync("./db/db.json", JSON.stringify(noteData));
     return res.json(noteData);
 });
-
 };
 
